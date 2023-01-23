@@ -1,32 +1,44 @@
 package com.ista.backend.apirest.model;
 
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import java.io.Serializable;
+
+import lombok.*;
+import javax.persistence.*;
+
 
 @Entity
-@Getter
-@Setter
-public class User implements Serializable {
-
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Table(name = "users")
+public class User {
 
     @Id
-    @Column(name = "id_usuario")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
-    @Column(name = "nombre", length = 50)
+    @Column(name = "nombre", length = 100)
     private String name;
 
-    @Column(name = "apellido", length = 50)
-    private String surname;
+    @Column(name = "apellido", length = 100)
+    private String urname;
 
-    @Column(name = "mail", length = 150, nullable = false, unique = true)
+    @Column(name = "clave", length = 100, nullable = false, unique = true)
+    private String password;
+
+    @Column(name = "correo", length = 200, nullable = false, unique = true)
     private String email;
 
-    @Column(name = "activo")
-    private String enabled;
+    @Column(name = "estado")
+    private String enable;
 
+    @NonNull
+    private String titulo;
+    private String imagenPath;
+    private String cedula;
 
+    @Transient
+    private String imagenUrl;
+
+    @Transient
+    private String cedulaUrl;
 }

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService{
-
     @Autowired
     UserRepository userRepository;
     @Override
     public CrudRepository<User, Integer> getDao() {
         return userRepository;
     }
+
 }
